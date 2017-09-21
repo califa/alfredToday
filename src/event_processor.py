@@ -118,12 +118,21 @@ class EventProcessor(object):
             iconfile = 'img/googleEvent_' + str(event.get('color',1)) +'.png'
             self.FUTURE_ITEMS.append(Item3(title, subtitle, arg=url, quicklookurl=description_url, icon=iconfile, valid=True))
             try:
-                hangout_url = event['hangoutLink']
-                hangout_title = u'\u21aa Join Hangout'
-                hangout_subtitle = "        " + hangout_url
-                self.FUTURE_ITEMS.append(Item3(hangout_title, hangout_subtitle, arg=hangout_url, valid=True, icon='img/hangout.png'))
+                hangout_url = event.get('hangoutLink')
+                #this code always prefers zoom links over hangouts. zoom links from event location are preferred over event description.
+                zoom_url = self.check_zoom(loc) if self.check_zoom(loc) else self.check_zoom(body_html)
+                conf_url = zoom_url if zoom_url is not None else hangout_url
+                conf_title = u'\u21aa Join Conference'
+                conf_subtitle = "        " + conf_url
+                self.FUTURE_ITEMS.append(Item3(conf_title, conf_subtitle, arg=conf_url, valid=True, icon='img/hangout.png'))
             except:
                 pass
+
+
+        def check_zoom(self, searchContent):
+            import re
+            m = re.search('(https?:\/\/.*zoom.us\/.+\/\w+)', searchContent)
+            return m.group(1) if m else None
 
 
 
@@ -276,5 +285,3 @@ class EventProcessor(object):
         local_dt = datetime.fromtimestamp(timestamp)
         assert utc_dt.resolution >= timedelta(microseconds=1)
         return local_dt.replace(microsecond=utc_dt.microsecond)
-
-
