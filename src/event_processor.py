@@ -120,11 +120,19 @@ class EventProcessor(object):
             try:
                 hangout_url = event.get('hangoutLink')
                 #this code always prefers zoom links over hangouts. zoom links from event location are preferred over event description.
-                zoom_url = self.check_zoom(loc) if self.check_zoom(loc) else self.check_zoom(body_html)
+                import re
+                zoom_loc = re.search('(https?:\/\/.*zoom.us\/.+\/\w+)', loc).group(1)
+                zoom_body = re.search('(https?:\/\/.*zoom.us\/.+\/\w+)', body_html).group(1)
+                zoom_url = zoom_loc if zoom_loc is not None else zoom_body
                 conf_url = zoom_url if zoom_url is not None else hangout_url
-                conf_title = u'\u21aa Join Conference'
-                conf_subtitle = "        " + conf_url
-                self.FUTURE_ITEMS.append(Item3(conf_title, conf_subtitle, arg=conf_url, valid=True, icon='img/hangout.png'))
+                if zoom_url is not None:
+                    conf_title = u'\u21aa Join Zoom'
+                    conf_subtitle = "        " + conf_url
+                    self.FUTURE_ITEMS.append(Item3(conf_title, conf_subtitle, arg=conf_url, valid=True, icon='img/zoom.png'))
+                else:
+                    conf_title = u'\u21aa Join Hangout'
+                    conf_subtitle = "        " + conf_url
+                    self.FUTURE_ITEMS.append(Item3(conf_title, conf_subtitle, arg=conf_url, valid=True, icon='img/hangout.png'))
             except:
                 pass
 
