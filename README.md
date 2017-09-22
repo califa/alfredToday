@@ -2,7 +2,7 @@
 
 This is a fork with slight tweaks to the [original alfredToday workflow]() by [jeeftor](https://github.com/jeeftor)
 
-![tomorrow](https://user-images.githubusercontent.com/602352/30753963-9908ea12-9fc9-11e7-82e4-04eb74b925d0.png)
+![today](https://user-images.githubusercontent.com/602352/30764219-a6848826-9ff2-11e7-92a9-b182b149a783.png)
 
 This workflow will load a **Today** or **Tomorrow** view from both Exchange365 and Google calendars. It will interweave the events, extract relevant meeting information and allow you to open links directly to your **Hangout** or **Skype** meeting - if one exists.
 
