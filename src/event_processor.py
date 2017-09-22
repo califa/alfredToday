@@ -119,30 +119,31 @@ class EventProcessor(object):
             self.FUTURE_ITEMS.append(Item3(title, subtitle, arg=url, quicklookurl=description_url, icon=iconfile, valid=True))
             try:
                 hangout_url = event.get('hangoutLink')
-                #this code always prefers zoom links over hangouts. zoom links from event location are preferred over event description.
-                import re
-                zoom_loc = re.search('(https?:\/\/.*zoom.us\/.+\/\w+)', loc).group(1)
-                zoom_body = re.search('(https?:\/\/.*zoom.us\/.+\/\w+)', body_html).group(1)
-                zoom_url = zoom_loc if zoom_loc is not None else zoom_body
+                zoom_url = self.get_zoom(loc) if self.get_zoom(loc) is not None else self.get_zoom(body_html)
+
+                # this code always prefers zoom links over hangouts. zoom links from event location are preferred over event description.
                 conf_url = zoom_url if zoom_url is not None else hangout_url
+                self.wf.logger.info("Conf url: [%s]", conf_url)
+
+                # zoom
                 if zoom_url is not None:
                     conf_title = u'\u21aa Join Zoom'
                     conf_subtitle = "        " + conf_url
                     self.FUTURE_ITEMS.append(Item3(conf_title, conf_subtitle, arg=conf_url, valid=True, icon='img/zoom.png'))
-                else:
+
+                # hangout
+                elif hangout_url is not None:
                     conf_title = u'\u21aa Join Hangout'
                     conf_subtitle = "        " + conf_url
                     self.FUTURE_ITEMS.append(Item3(conf_title, conf_subtitle, arg=conf_url, valid=True, icon='img/hangout.png'))
             except:
                 pass
 
-
-        def check_zoom(self, searchContent):
-            import re
-            m = re.search('(https?:\/\/.*zoom.us\/.+\/\w+)', searchContent)
-            return m.group(1) if m else None
-
-
+    def get_zoom(self, searchContent):
+        try:
+            return re.search('(https?:\/\/.*zoom.us\/.+\/\w+)', searchContent).group(1)
+        except:
+            return None
 
     def process_events(self, exchange_events, google_events):
         """Processes both Google & Outlook events handling the interleving of data correctly (hopefully)"""
