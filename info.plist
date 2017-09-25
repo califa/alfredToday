@@ -4,10 +4,21 @@
 <dict>
 	<key>bundleid</key>
 	<string>org.jeef.today</string>
-	<key>category</key>
-	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
+		<key>0A6D12B2-429B-4D52-AE8E-CEF998619701</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7FAC85BC-DACB-4741-8C39-5B0F0D251A9E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>0ABF3E4E-934B-4EE9-9C6B-BA10DF534B47</key>
 		<array>
 			<dict>
@@ -87,11 +98,9 @@
 			</dict>
 		</array>
 		<key>361EEA91-97CF-4908-8628-5F29198F42E6</key>
-		<array>
-		</array>
+		<array/>
 		<key>3F81D499-33A5-44E8-8D22-F6309229F43B</key>
-		<array>
-		</array>
+		<array/>
 		<key>41AF5BED-C2EE-4FDC-B9DF-AFDEB347F6A8</key>
 		<array>
 			<dict>
@@ -106,8 +115,7 @@
 			</dict>
 		</array>
 		<key>5396CADE-8847-4968-9A2F-051C2730315E</key>
-		<array>
-		</array>
+		<array/>
 		<key>629EE274-2500-46EC-8DA5-35CD866A56C9</key>
 		<array>
 			<dict>
@@ -173,6 +181,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>7FAC85BC-DACB-4741-8C39-5B0F0D251A9E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C433E48C-E157-465F-B153-EDAD351D9629</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>83FB8DCA-2FEC-4B0A-94E5-E1E35F80F549</key>
 		<array>
 			<dict>
@@ -226,8 +247,7 @@
 			</dict>
 		</array>
 		<key>B95A7CF4-4AF9-4388-8B53-E8CB6F3350FC</key>
-		<array>
-		</array>
+		<array/>
 		<key>BB49C951-D08C-4C86-88D1-E55D150207DD</key>
 		<array>
 			<dict>
@@ -323,6 +343,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>CDC55E4F-BFD3-4BEA-B684-66336863C635</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5E382C06-3E6C-4C8E-BF0C-099E7AAFD053</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>D68F5B32-D530-455F-AB62-B775D04F2A3F</key>
 		<array>
 			<dict>
@@ -376,56 +409,10 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<true/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>python src/background_auth_task.py</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>714DD3C9-FEC2-4C98-B8EE-817AE843584C</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>query=$1
-
-python src/store_data.py $query</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>2FD9C804-F0F1-4F90-8C9C-59A8C2AB78A7</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>escaping</key>
@@ -471,19 +458,67 @@ python src/calendar_settings.py "{query}"</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>query=$1
+
+python src/store_data.py $query</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>2FD9C804-F0F1-4F90-8C9C-59A8C2AB78A7</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<true/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>python src/background_auth_task.py</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>714DD3C9-FEC2-4C98-B8EE-817AE843584C</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>inputstring</key>
-				<string>{var:value_to_store}</string>
+				<string>{var:settings_value}</string>
 				<key>matchcasesensitive</key>
 				<true/>
 				<key>matchmode</key>
 				<integer>0</integer>
 				<key>matchstring</key>
-				<string>1</string>
+				<string>use_google</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.filter</string>
 			<key>uid</key>
-			<string>E54262CD-7EE8-42E4-A277-823EB0492941</string>
+			<string>83FB8DCA-2FEC-4B0A-94E5-E1E35F80F549</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -508,18 +543,18 @@ python src/calendar_settings.py "{query}"</string>
 			<key>config</key>
 			<dict>
 				<key>inputstring</key>
-				<string>{var:settings_value}</string>
+				<string>{var:value_to_store}</string>
 				<key>matchcasesensitive</key>
 				<true/>
 				<key>matchmode</key>
 				<integer>0</integer>
 				<key>matchstring</key>
-				<string>use_google</string>
+				<string>1</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.utility.filter</string>
 			<key>uid</key>
-			<string>83FB8DCA-2FEC-4B0A-94E5-E1E35F80F549</string>
+			<string>E54262CD-7EE8-42E4-A277-823EB0492941</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -547,6 +582,8 @@ python src/calendar_settings.py "{query}"</string>
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>escaping</key>
@@ -617,27 +654,6 @@ python src/settings.py</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>keyword</key>
-				<string>set value</string>
-				<key>subtext</key>
-				<string>{query}</string>
-				<key>text</key>
-				<string>Set {var:text_to_display}</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>D7C83B7F-D112-4AA1-B7A3-20257A0F3D52</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -663,13 +679,21 @@ python src/store_data.py $query</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>type</key>
+				<key>argumenttype</key>
 				<integer>0</integer>
+				<key>keyword</key>
+				<string>set value</string>
+				<key>subtext</key>
+				<string>{query}</string>
+				<key>text</key>
+				<string>Set {var:text_to_display}</string>
+				<key>withspace</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.utility.transform</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>C648C777-D441-4C9C-97A0-F561B76C99BA</string>
+			<string>D7C83B7F-D112-4AA1-B7A3-20257A0F3D52</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -694,6 +718,21 @@ python src/store_data.py $query</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.transform</string>
+			<key>uid</key>
+			<string>C648C777-D441-4C9C-97A0-F561B76C99BA</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>fixedorder</key>
@@ -765,6 +804,8 @@ python src/reset.py $query</string>
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -807,8 +848,23 @@ python src/reset.py $query</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>triggerid</key>
+				<string>Today</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>93885FA3-1489-43F1-ABDC-C30454BCE345</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -848,19 +904,6 @@ python src/today.py 0 "$query"
 			<string>9685A5A9-008A-40CA-836D-5F71CD1D7481</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>triggerid</key>
-				<string>Today</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.external</string>
-			<key>uid</key>
-			<string>93885FA3-1489-43F1-ABDC-C30454BCE345</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -936,6 +979,8 @@ python src/today.py 0 "$query"
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
@@ -1005,6 +1050,126 @@ python src/today.py 1 "$query"
 			<string>alfred.workflow.utility.filter</string>
 			<key>uid</key>
 			<string>34DD7C4D-0981-4F27-95C6-86953EE6163B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>yesterday</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading Calendar Data (this can take a few seconds)</string>
+				<key>script</key>
+				<string>query=$1
+python src/today.py -1 "$query"
+</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>~/devel/exchangeAPI/today.py</string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Yesterday</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>7FAC85BC-DACB-4741-8C39-5B0F0D251A9E</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>triggerid</key>
+				<string>Yesterday</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>0A6D12B2-429B-4D52-AE8E-CEF998619701</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>week</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading Calendar Data (this can take a few seconds)</string>
+				<key>script</key>
+				<string>query=$1
+python src/today.py 10 "$query"
+</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>~/devel/exchangeAPI/today.py</string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>This Week</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>5E382C06-3E6C-4C8E-BF0C-099E7AAFD053</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>triggerid</key>
+				<string>This Week</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>CDC55E4F-BFD3-4BEA-B684-66336863C635</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -1114,6 +1279,15 @@ East Coast Time:
 It "may" be stuck on East Coast time for the time being</string>
 	<key>uidata</key>
 	<dict>
+		<key>0A6D12B2-429B-4D52-AE8E-CEF998619701</key>
+		<dict>
+			<key>note</key>
+			<string>External trigger that allows for autorefresh</string>
+			<key>xpos</key>
+			<integer>110</integer>
+			<key>ypos</key>
+			<integer>950</integer>
+		</dict>
 		<key>0ABF3E4E-934B-4EE9-9C6B-BA10DF534B47</key>
 		<dict>
 			<key>note</key>
@@ -1137,7 +1311,7 @@ It "may" be stuck on East Coast time for the time being</string>
 			<key>xpos</key>
 			<integer>110</integer>
 			<key>ypos</key>
-			<integer>790</integer>
+			<integer>800</integer>
 		</dict>
 		<key>25233780-2524-4D31-8D4F-3F78744A8A63</key>
 		<dict>
@@ -1191,7 +1365,7 @@ It "may" be stuck on East Coast time for the time being</string>
 			<key>xpos</key>
 			<integer>100</integer>
 			<key>ypos</key>
-			<integer>1090</integer>
+			<integer>1210</integer>
 		</dict>
 		<key>5396CADE-8847-4968-9A2F-051C2730315E</key>
 		<dict>
@@ -1200,14 +1374,21 @@ It "may" be stuck on East Coast time for the time being</string>
 			<key>xpos</key>
 			<integer>610</integer>
 			<key>ypos</key>
-			<integer>1030</integer>
+			<integer>1150</integer>
+		</dict>
+		<key>5E382C06-3E6C-4C8E-BF0C-099E7AAFD053</key>
+		<dict>
+			<key>xpos</key>
+			<integer>310</integer>
+			<key>ypos</key>
+			<integer>1070</integer>
 		</dict>
 		<key>629EE274-2500-46EC-8DA5-35CD866A56C9</key>
 		<dict>
 			<key>xpos</key>
 			<integer>310</integer>
 			<key>ypos</key>
-			<integer>790</integer>
+			<integer>800</integer>
 		</dict>
 		<key>67A81BBE-1261-4883-8590-56E22BC259EB</key>
 		<dict>
@@ -1261,7 +1442,14 @@ It "may" be stuck on East Coast time for the time being</string>
 			<key>xpos</key>
 			<integer>510</integer>
 			<key>ypos</key>
-			<integer>1080</integer>
+			<integer>1200</integer>
+		</dict>
+		<key>7FAC85BC-DACB-4741-8C39-5B0F0D251A9E</key>
+		<dict>
+			<key>xpos</key>
+			<integer>310</integer>
+			<key>ypos</key>
+			<integer>950</integer>
 		</dict>
 		<key>83FB8DCA-2FEC-4B0A-94E5-E1E35F80F549</key>
 		<dict>
@@ -1304,7 +1492,7 @@ It "may" be stuck on East Coast time for the time being</string>
 			<key>xpos</key>
 			<integer>610</integer>
 			<key>ypos</key>
-			<integer>1190</integer>
+			<integer>1310</integer>
 		</dict>
 		<key>BB49C951-D08C-4C86-88D1-E55D150207DD</key>
 		<dict>
@@ -1313,7 +1501,7 @@ It "may" be stuck on East Coast time for the time being</string>
 			<key>xpos</key>
 			<integer>380</integer>
 			<key>ypos</key>
-			<integer>1120</integer>
+			<integer>1240</integer>
 		</dict>
 		<key>BF83BB0D-9D59-416E-8049-8F1E25A79367</key>
 		<dict>
@@ -1346,6 +1534,15 @@ It "may" be stuck on East Coast time for the time being</string>
 			<integer>180</integer>
 			<key>ypos</key>
 			<integer>170</integer>
+		</dict>
+		<key>CDC55E4F-BFD3-4BEA-B684-66336863C635</key>
+		<dict>
+			<key>note</key>
+			<string>External trigger that allows for autorefresh</string>
+			<key>xpos</key>
+			<integer>110</integer>
+			<key>ypos</key>
+			<integer>1070</integer>
 		</dict>
 		<key>D68F5B32-D530-455F-AB62-B775D04F2A3F</key>
 		<dict>
@@ -1399,7 +1596,7 @@ It "may" be stuck on East Coast time for the time being</string>
 		<string>false</string>
 	</dict>
 	<key>version</key>
-	<string>5.0.8</string>
+	<string>5.0.7</string>
 	<key>webaddress</key>
 	<string>https://github.com/jeeftor/alfredToday</string>
 </dict>
