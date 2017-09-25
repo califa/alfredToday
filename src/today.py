@@ -58,6 +58,23 @@ def main(wf):
     morning = timezone("US/Eastern").localize(datetime.today().replace(hour=0, minute=0, second=1) + timedelta(days=date_offset))
     night = timezone("US/Eastern").localize(datetime.today().replace(hour=23, minute=59, second=59) + timedelta(days=date_offset))
 
+    def get_week(today):
+        day_of_week = today.weekday()
+
+        to_beginning_of_week = timedelta(days=day_of_week)
+        beginning_day = today - to_beginning_of_week
+
+        to_end_of_week = timedelta(days=6 - day_of_week)
+        end_day = today + to_end_of_week
+
+        beginning_of_week = timezone("US/Eastern").localize(beginning_day.replace(hour=0, minute=0, second=1))
+        end_of_week = timezone("US/Eastern").localize(end_day.replace(hour=23, minute=59, second=59))
+
+        return (beginning_of_week, end_of_week)
+
+    if date_offset == 10:
+        morning, night = get_week(datetime.today())
+
     # Outlook needs a different time format than google it would appear
     start_outlook = morning.astimezone(pytz.utc)
     end_outlook   = night.astimezone(pytz.utc)
@@ -74,11 +91,13 @@ def main(wf):
         """Wrapper around outlook query so can be used with caching"""
         return query_exchange_server(wf,start_outlook, end_outlook, date_offset)
 
-
-
     # Format date text for displays
     date_text = night.strftime("%A %B %d, %Y")
     date_text_numeric = night.strftime("%m/%d/%y")
+
+    if date_offset == 10:
+        date_text = morning.strftime("%A") + " – " + night.strftime("%A")
+        date_text_numeric = morning.strftime("%m/%d/%y") +  " – " + night.strftime("%m/%d/%y")
 
     # Build Cache Keys
     exchange_cache_key = get_cache_key('exchange', date_offset)
@@ -271,9 +290,9 @@ def main(wf):
 
     if showing_cached_data:
         first_menu_entry.subtitle += " - Cached Data"
-    else:
-        first_menu_entry.subtitle += " query time: " + "{:.1f}".format(
-            action_elapsed_time) + " seconds"
+    #else:
+        #first_menu_entry.subtitle += " query time: " + "{:.1f}".format(
+        #    action_elapsed_time) + " seconds"
 
     wf.send_feedback()
 
