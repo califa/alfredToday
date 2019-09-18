@@ -1,12 +1,12 @@
 # Today Workflow for Outlook365 and Google Calendar
 
+This is a fork with slight tweaks to the [original alfredToday workflow]() by [jeeftor](https://github.com/jeeftor)
 
-![today](docs/today.png)
+![today](https://user-images.githubusercontent.com/602352/30764219-a6848826-9ff2-11e7-92a9-b182b149a783.png)
 
-This workflow will load a **Today** view from both Exchange365 and Google calendars.  It will interleave the events, extract relevant meeting information and allow you to open links directly to your **Hangout** or **Skype** meeting - if one exists.
+This workflow will load a **Today** or **Tomorrow** view from both Exchange365 and Google calendars. It will interweave the events, extract relevant meeting information and allow you to open links directly to your **Hangout** or **Skype** meeting - if one exists.
 
-
-Version two of this add-on supports both **Google** and **Microsoft Exchange** calendars.  
+Version two of this add-on supports both **Google** and **Microsoft Exchange** calendars. 
 
 ### Version History
 * Version 2.0 - Outlook + Google Support
@@ -16,10 +16,17 @@ Version two of this add-on supports both **Google** and **Microsoft Exchange** c
 * Version 3.0: HUGE SPEEDUPS.  Requires Alfred 3.1 
 * Version 3.5: Prelim NTLM support (untested)
 * Version 3.8: Rewrite of background handling for both Outlook and Exchange
+* Fork + tweaks took place as of Version 5.0.6
+
+### Tweaks by Joel
+* Chronological interweaving of different Google calendars.
+* Zoom chat parsing and functionality.
+* Different graphic assets that work with the default Alfred skin.
+
 
 
 # Installation
-Grab the latest release [here](https://github.com/jeeftor/alfredToday/releases) 
+Grab the latest release [here](https://github.com/califa/alfredToday/releases/tag/j0.1) 
 
 # Usage
 
