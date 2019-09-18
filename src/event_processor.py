@@ -73,12 +73,19 @@ class EventProcessor(object):
         duration = end_dateutil - start_dateutil
         if  duration.days == 1:
             all_day_event = True
-            time_string = "All day Event"
+            time_string = "All Day Event"
+            if date_offset == 10:
+                time_string = start_dateutil.strftime('%A') + ", All Day Event"
             if hide_all_day_events:
                 return
         else:
             all_day_event = False
             time_string = start + " - " + end
+            if date_offset == 10:
+                day_string = start_dateutil.strftime('%A')
+                if datetime.today().weekday() == start_dateutil.weekday():
+                    day_string = "Today"
+                time_string = day_string + ", " + start + " - " + end
 
 
 
@@ -91,6 +98,13 @@ class EventProcessor(object):
             subtitle = subtitle + " [" + loc + "]"
         except:
             loc = ''
+            pass
+
+        try:
+            general_conf = event.get('conferenceData')['entryPoints'][0]['uri']
+            subtitle = subtitle + " [" + general_conf + "]"
+        except:
+            general_conf = ''
             pass
 
         body_html = event.get('description','No description given')
@@ -119,11 +133,15 @@ class EventProcessor(object):
             self.FUTURE_ITEMS.append(Item3(title, subtitle, arg=url, quicklookurl=description_url, icon=iconfile, valid=True))
             try:
                 hangout_url = event.get('hangoutLink')
-                zoom_url = self.get_zoom(loc) if self.get_zoom(loc) is not None else self.get_zoom(body_html)
+                if self.get_zoom(loc) is not None:
+                    zoom_url = self.get_zoom(loc)
+                elif general_conf != '':
+                    zoom_url = general_conf
+                else:
+                    zoom_url = self.get_zoom(body_html)
 
                 # this code always prefers zoom links over hangouts. zoom links from event location are preferred over event description.
                 conf_url = zoom_url if zoom_url is not None else hangout_url
-                self.wf.logger.info("Conf url: [%s]", conf_url)
 
                 # zoom
                 if zoom_url is not None:
@@ -223,6 +241,9 @@ class EventProcessor(object):
         # self.wf.logger.info('Searching regex')
 
         time_string = start_datetime.strftime("%I:%M %p") + " - " + end_datetime.strftime("%I:%M %p")
+        if date_offset == 10:
+            time_string = start_dateutil.strftime('%A') + ", " + start_datetime.strftime("%I:%M %p") + " - " + end_datetime.strftime("%I:%M %p")
+
 
         org_name = event.organizer[0]
         org_email = event.organizer[1]
