@@ -159,7 +159,7 @@ class EventProcessor(object):
 
     def get_zoom(self, searchContent):
         try:
-            return re.search('(https?:\/\/.*zoom.us\/.+\/\w+)', searchContent).group(1)
+            return re.search('(https?:\/\/.*zoom.us\/.+\/\w+(\?pwd=\w+)?)', searchContent).group(1)
         except:
             return None
 
